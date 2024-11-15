@@ -4,11 +4,11 @@ describe('Pruebas de Autenticación en Deeptruth Detection', () => {
     cy.wait(1000);
   });
 
-  it('debería cargar la página del proyecto', () => {
+  it('debe cargar la página del proyecto', () => {
     cy.contains('¡Detecta Deepfakes y Protege tu Seguridad!');
     cy.wait(1000);
   });
-  it('debería iniciar sesión con Google (mock)', () => {
+  it('debe iniciar sesión con Google (mock)', () => {
     cy.intercept('GET', '**/identitytoolkit.googleapis.com/v1/projects*', {
       statusCode: 200,
       body: { idToken: 'fake-id-token' }
@@ -21,7 +21,7 @@ describe('Pruebas de Autenticación en Deeptruth Detection', () => {
     cy.contains('Cerrar Sesión').should('be.visible');
     cy.wait(1000);
   });
-  it('debería iniciar sesión con correo y contraseña', () => {
+  it('debe iniciar sesión con correo y contraseña', () => {
     cy.get('button').contains('Iniciar Sesión').click();
     cy.wait(1000);
     cy.get('form').should('be.visible');
@@ -36,7 +36,7 @@ describe('Pruebas de Autenticación en Deeptruth Detection', () => {
     cy.wait(1000);
   });
 
-  it('debería cerrar sesión correctamente', () => {
+  it('debe cerrar sesión correctamente', () => {
     cy.get('button').contains('Iniciar Sesión').click();
     cy.wait(1000);
     cy.get('#email').type('admin@gmail.com');
